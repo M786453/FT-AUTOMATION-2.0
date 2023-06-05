@@ -49,7 +49,10 @@ class SFTPClient:
                         sftp.get(remote_path, local_path)
                         log = "'" + remote_path + "' downloaded."
                         self.logs += log + "\n"
-                        print(log)
+
+                        # Print coloured output using ANSI sequence
+                        # Using green color to print downloaded files logs
+                        print("\033[1;32m" + log + "\033[0m" )
 
         except Exception as e:
             print("Error:", str(e), "for", self.hostname)
