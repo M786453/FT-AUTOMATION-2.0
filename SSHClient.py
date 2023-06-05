@@ -43,3 +43,11 @@ class SSHClient:
 
     def disconnect(self):
         self.client.close()
+
+    """
+    Shutdown remote system
+    """
+    def shutdownRemoteSys(self):
+        # Execute the shutdown command
+        command = "shutdown /s /f /t 0"
+        self.client.exec_command(command)

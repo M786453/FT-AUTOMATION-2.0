@@ -28,6 +28,8 @@ def main():
             sftp_client = SFTPClient(ssh_connection)
             sftp_client.download_directory(source_path, destination_path)
         finally:
+            # shutdown remote system
+            ssh_connection.shutdownRemoteSys()
             # close ssh connection
             ssh_connection.disconnect()
 
