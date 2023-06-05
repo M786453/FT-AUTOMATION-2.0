@@ -1,13 +1,15 @@
 from SSHClient import SSHClient
 from SFTPClient import SFTPClient
-
+import getpass
 
 
 def main():
 
     hostname = input("Enter Hostname: ")
     username = input("Enter Username: ")
-    password = input("Enter Password: ")
+    password = getpass.getpass("Enter Password: ")
+    
+    print("Entered Password:", "*"*len(password))
 
     """
     source_path: path of directory present on remote system
