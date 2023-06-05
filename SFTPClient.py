@@ -5,6 +5,7 @@ import stat
 class SFTPClient:
     def __init__(self, ssh_connection):
         self.ssh_connection = ssh_connection
+        self.logs = ""
 
     """
     This function is used to download a directory from remote server into local system.
@@ -16,6 +17,9 @@ class SFTPClient:
         )  # parent downloading directory name
         self.root_path = os.path.join(destination_path, parent_down_dir)
         self._download(source_path, self.root_path)
+        self._write_logs()
+        
+
 
     """
     This function is the part of 'download_directory' function.
@@ -43,20 +47,16 @@ class SFTPClient:
                     # If file not exists in local system, then download it
                     if not os.path.exists(local_path):
                         sftp.get(remote_path, local_path)
-                        print("'" + remote_path + "'", "downloaded.")
+                        log = "'" + remote_path + "' downloaded."
+                        self.logs += log + "\n"
+                        print(log)
 
         except Exception as e:
             print("Error:", str(e), "for", self.hostname)
         finally:
             sftp.close()
 
-    """
-    This function checks whether the specified file exists or not on remote server
-    """
+    def _write_logs(self):
+        with open("logs.txt", "w") as logFile:
+            logFile.write(self.logs)
 
-    def _file_exists(self, sftp, remote_path):
-        try:
-            sftp.stat(remote_path)
-            return True  # File exists
-        except FileNotFoundError:
-            return False  # File does not exists
