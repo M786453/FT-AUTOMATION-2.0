@@ -47,12 +47,13 @@ class SFTPClient:
                     # If file not exists in local system, then download it
                     if not os.path.exists(local_path):
                         sftp.get(remote_path, local_path)
-                        log = "'" + remote_path + "' downloaded."
-                        self.logs += log + "\n"
+                
+                log = "'" + remote_path + "' downloaded."
+                self.logs += log + "\n"
 
-                        # Print coloured output using ANSI sequence
-                        # Using green color to print downloaded files logs
-                        print("\033[1;32m" + log + "\033[0m" )
+                # Print coloured output using ANSI sequence
+                # Using green color to print downloaded files logs
+                print("\033[1;32m" + log + "\033[0m" )
 
         except Exception as e:
             print("Error:", str(e), "for", self.hostname)
