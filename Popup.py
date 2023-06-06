@@ -21,8 +21,8 @@ class Popup:
         label.pack(pady=20)
 
 
-        # Focus on the popup window
-        popup.focus_set()
+        # Configure the popup window to be topmost
+        popup.attributes("-topmost", True)
 
         # Define a function to close the popup
         def close_popup():
@@ -30,7 +30,7 @@ class Popup:
             root.quit()
 
         # # Schedule the close_popup function to be called after 3000 milliseconds (3 seconds)
-        root.after(3000, close_popup)
+        root.after(2000, close_popup)
 
         root.mainloop()
     
