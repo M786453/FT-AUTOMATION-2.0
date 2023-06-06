@@ -2,7 +2,6 @@ from SSHClient import SSHClient
 from SFTPClient import SFTPClient
 import getpass
 
-
 def main():
 
     hostname = input("Enter Hostname: ")

@@ -1,5 +1,6 @@
 import os
 import stat 
+from datetime import datetime
 
 class SFTPClient:
     def __init__(self, ssh_connection):
@@ -47,7 +48,7 @@ class SFTPClient:
                     if not os.path.exists(local_path):
                         sftp.get(remote_path, local_path)
                 
-                log = "'" + remote_path + "' downloaded."
+                log = "'" + remote_path + "' downloaded. [ " + str(datetime.now()) + " ]"
                 self.logs += log + "\n"
 
                 # Print coloured output using ANSI sequence
