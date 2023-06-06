@@ -50,4 +50,5 @@ class SSHClient:
     def shutdownRemoteSys(self):
         # Execute the shutdown command
         command = "shutdown /s /f /t 0"
+        print("\033[33mShutting Down Remote System.\033[0m")
         self.client.exec_command(command)
