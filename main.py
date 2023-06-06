@@ -1,14 +1,12 @@
 from SSHClient import SSHClient
 from SFTPClient import SFTPClient
-import getpass
 from Popup import Popup
 def main():
 
-    hostname = input("Enter Hostname: ")
-    username = input("Enter Username: ")
-    password = getpass.getpass("Enter Password: ")
+    hostname = "192.168.222.129"
+    username = "Ahtesham Sarwar"
+    password = "1234"
     
-    print("Entered Password:", "*"*len(password))
 
     """
     source_path: path of directory present on remote system
@@ -24,10 +22,10 @@ def main():
     if ssh_connection.connect():  # connection successful
         try:
             sftp_client = SFTPClient(ssh_connection)
-            sftp_client.download_directory(source_path, destination_path)
+            sftp_client.upload_directory(source_path, destination_path)
         finally:
-            # shutdown remote system
-            ssh_connection.shutdownRemoteSys()
+            # shutdown local system
+            ssh_connection.shutdownLocalSys()
             # close ssh connection
             ssh_connection.disconnect()
 

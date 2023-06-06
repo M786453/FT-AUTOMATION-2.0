@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 class Popup:
 
-    def show(title, message):
+    def show(title, message, delay):
         
         # Create a Tkinter root window
         root = tk.Tk()
@@ -29,8 +29,8 @@ class Popup:
             popup.destroy()
             root.quit()
 
-        # # Schedule the close_popup function to be called after 3000 milliseconds (3 seconds)
-        root.after(2000, close_popup)
+        # Schedule the close_popup function to be called after 2000 milliseconds (2 seconds)
+        root.after(delay, close_popup)
 
         root.mainloop()
     

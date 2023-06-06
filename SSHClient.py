@@ -1,5 +1,6 @@
 import paramiko
 from Popup import Popup
+import os
 
 class SSHClient:
 
@@ -51,7 +52,20 @@ class SSHClient:
         # Execute the shutdown command
         command = "shutdown /s /f /t 0"
         print("\033[33mShutting Down Remote System.\033[0m")
-        Popup.show(self.hostname, "Shutting Down System.")
+        Popup.show(self.hostname, "Shutting Down System.",15000)
         self.client.exec_command(command)
+
+    
+    """
+    Shutdown local system
+    """
+    def shutdownLocalSys(self):
+        
+        print("\033[33mShutting Down Local System.\033[0m")
+        Popup.show("Local System", "Shutting Down System.",15000)    
+        os.system("shutdown /s /t 0")
+
+
+
 
 
