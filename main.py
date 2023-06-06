@@ -15,9 +15,8 @@ def main():
     source_path: path of directory present on remote system
     destination_path: path where the directory will be downloaded on local system
     """
-    source_path = "E:/123"
-    destination_path = "./"
-
+    source_path = input("Enter Source Path: ")
+    destination_path = input("Enter Destination Path: ")
 
     ssh_connection = SSHClient(
             hostname, username, password

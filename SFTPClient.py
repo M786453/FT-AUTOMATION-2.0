@@ -1,7 +1,6 @@
 import os
 import stat 
 
-
 class SFTPClient:
     def __init__(self, ssh_connection):
         self.ssh_connection = ssh_connection
